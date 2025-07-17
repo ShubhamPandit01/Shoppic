@@ -1,0 +1,64 @@
+import { useState } from "react";
+
+import { GiHamburgerMenu } from "react-icons/gi";
+import { FaUserAlt, FaCartPlus} from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import Hamburger from "./Hamburger";
+
+
+const Navbar = () => {
+    const [cart, setCart] = useState(false)
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const { cartItems } = useSelector((state) => state.cart);
+
+    function handlePath(){
+        if(cart == ''){
+            setCart('cart')
+        }else setCart('')
+    }
+
+    return (
+        <div className="w-full py-3 shadow-xl bg-white fixed z-50">
+
+            <div className="container mx-auto flex items-center justify-between px-4 mb-2">
+                <Link to='/' className="w-[100%]  lg:text-5xl text-4xl font-bold text-start text-red-700 cursor-pointer" >
+                    <h1>Shoppic</h1>
+                </Link >
+
+                 <div className="text-3xl text-red-700 lg:hidden cursor-pointer" onClick={() => setMenuOpen(!menuOpen)}>
+                    <GiHamburgerMenu />
+                </div>
+
+
+                <div className="hidden lg:flex justify-center gap-10 py-2 items-center">
+                    <Link to="/" className="text-lg hover:text-red-700 hover:underline hover:scale-105 transition duration-300">Home</Link>
+                    <Link to="/shop" className="text-lg hover:text-red-700 hover:underline hover:scale-105 transition duration-300">Shop</Link>
+                    <Link to="/contact" className="text-lg hover:text-red-700 hover:underline hover:scale-105 transition duration-300">Contact</Link>
+                    <Link to="/about" className="text-lg hover:text-red-700 hover:underline hover:scale-105 transition duration-300">About</Link>
+
+                    <div className="relative flex items-center gap-5 text-xl ml-6">
+                        <Link to={`/${cart? '': 'cart'}`}><FaCartPlus className="text-lg hover:text-red-700 cursor-pointer hover:scale-110 transition" onClick={handlePath} />
+                                {cartItems.length > 0 && (
+                                    <span className="absolute left-3 bottom-3 text-xs bg-red-700 text-white px-1 rounded-full">
+                                        {cartItems.length}
+                                    </span>
+                                )}
+                        </Link>
+                        <FaUserAlt className="text-lg hover:text-red-700 cursor-pointer hover:scale-110 transition" />
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div>
+                {menuOpen && <Hamburger setMenuOpen={setMenuOpen}/>}
+            </div>
+
+        </div>
+    );
+    };
+
+export default Navbar;
