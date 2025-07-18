@@ -13,6 +13,7 @@ import { fetchData } from "./Redux/slice/data";
 import Cart from "./Components/Cart";
 import { FaCartPlus } from "react-icons/fa";
 import User from "./Components/User";
+import ProductDetail from "./Components/ProductDetail";
 
 
 
@@ -20,7 +21,7 @@ function App() {
 
   const dispatch = useDispatch();
   const { cartItems} = useSelector((state) => state.cart)
-
+  
   useEffect(() => {
     dispatch(fetchData());
   }, []);
@@ -37,6 +38,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/user" element={<User />} />
+            <Route path="/productDetails" element={<ProductDetail />} />
           </Routes>
 
           {cartItems.length > 0 && (

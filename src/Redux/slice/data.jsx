@@ -15,10 +15,16 @@ export const fetchData = createAsyncThunk('fetchData', async()=>{
 const dataSlice = createSlice({
     name :'fetchData',
     initialState: {
+        clickedProduct: null,
         isLoading:false,
         isError: false,
         data:null,
         errorMsg: ''
+    },
+    reducers: {
+        filteredProduct: (state, action) => {
+            state.clickedProduct = state.data.products.find((product) => product.id === action.payload);
+        }
     },
     extraReducers:(builder)=>{
         builder.addCase(fetchData.fulfilled, (state,action)=>{
@@ -37,4 +43,5 @@ const dataSlice = createSlice({
     }
 })
 
+export const {filteredProduct} = dataSlice.actions
 export default dataSlice.reducer

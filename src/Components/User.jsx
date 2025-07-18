@@ -12,6 +12,10 @@ const User = () => {
   const navigate = useNavigate();
   const { message, currentUser } = useSelector((state) => state.user);
 
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
+
   const handleSignup = (e) => {
     e.preventDefault();
     dispatch(signUp(signupData));

@@ -30,7 +30,7 @@ const Cart = () => {
                         cartItems.length > 0 ? (
                             cartItems.map((product) => (
                                 <div key={product.id} className="flex flex-col sm:flex-row sm:items-center gap-4 border-b pb-4">
-                                    <img src={product.images[0]} alt={product.title} className="w-[100px] h-[100px] object-cover" />
+                                    <img src={product.images?.[0] || "https://i.pinimg.com/736x/e2/6c/ab/e26cab770fe12397e13ee258429c6250.jpg"} alt={product.title} className="w-[100px] h-[100px] object-cover" />
                                     <div className="flex flex-col gap-1">
                                         <h1 className="text-lg font-semibold">{product.title}</h1>
                                         <p className="text-gray-700 font-medium">${product.price}</p>
