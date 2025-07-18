@@ -25,7 +25,7 @@ const Cart = () => {
 
             <div className="flex flex-col lg:flex-row gap-5 justify-center">
 
-                <div className="w-full lg:w-[65%] flex flex-col gap-3 px-3 py-5 shadow-xl max-h-[calc(100vh-200px)] overflow-y-auto">
+                <div className="w-full lg:w-[65%] flex flex-col gap-3 px-3 py-5 shadow-xl max-h-[calc(100vh-200px)] overflow-y-auto relative">
                     {
                         cartItems.length > 0 ? (
                             cartItems.map((product) => (
