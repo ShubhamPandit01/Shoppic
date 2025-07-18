@@ -5,11 +5,13 @@ import { FaUserAlt, FaCartPlus} from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Hamburger from "./Hamburger";
+import LogoutButton from "./Logout";
 
 
 const Navbar = () => {
     const [cart, setCart] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false);
+    const [userProfile, setUserProfile] = useState(false);
 
     const { cartItems } = useSelector((state) => state.cart);
 
@@ -18,6 +20,10 @@ const Navbar = () => {
             setCart('cart')
         }else setCart('')
     }
+
+    const { currentUser } = useSelector((state) => state.user); // for logout
+
+
 
     return (
         <div className="w-full py-3 shadow-xl bg-white fixed z-50">
@@ -46,7 +52,8 @@ const Navbar = () => {
                                     </span>
                                 )}
                         </Link>
-                        <FaUserAlt className="text-lg hover:text-red-700 cursor-pointer hover:scale-110 transition" />
+                        {!currentUser?<Link to={`/${userProfile? '': 'user'}`}><FaUserAlt className="text-lg hover:text-red-700 cursor-pointer hover:scale-110 transition" onClick={()=>setUserProfile(!userProfile)}/></Link>
+                        :<LogoutButton/>}
                     </div>
 
                 </div>

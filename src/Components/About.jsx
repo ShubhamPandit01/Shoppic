@@ -9,7 +9,7 @@ const About = () => {
   },[])
 
   return (
-    // From Chat GPT
+
     <div className="bg-gray-100 py-12 px-6 md:px-20 lg:pt-[100px] sm:pt-[130px]">
       <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12 space-y-6">
         <h2 className="lg:text-4xl text-3xl font-bold text-center text-gray-800">

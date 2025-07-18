@@ -18,7 +18,7 @@ const Cart = () => {
     }
 
     return (
-        <div className="w-full pt-[90px] px-3">   
+        <div className="min-h-screen w-full pt-[90px] px-3 ">   
             <h1 className="text-3xl lg:text-4xl font-bold mb-6">
                 My <Link to="/shop" className="text-red-700 cursor-pointer">Cart</Link>
             </h1>

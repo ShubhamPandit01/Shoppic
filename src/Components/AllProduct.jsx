@@ -12,7 +12,7 @@ const AllProduct = () => {
         <div className="relative">
              <h1 className="lg:text-4xl text-2xl lg:ml-18 ml-4 font-bold cursor-pointer">All <span className="text-red-700 underline">Products</span></h1>
 
-            <div className=" rounded-2xl shadow-xl p-6 grid lg:grid-cols-4 gap-6 sm:grid-cols-2">
+            <div className="lg:mt-[30px] container mx-auto grid lg:grid-cols-4 sm:grid-cols-2 sm:gap-5 lg:gap-4 lg:px-0 p-6">
                 {
                     data?.products?.slice(0,4).map((product, index)=>(
                         <div key={index}><ProductCard product={product}/></div>
