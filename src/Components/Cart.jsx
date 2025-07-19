@@ -17,6 +17,11 @@ const Cart = () => {
         dispatch(removeFromCart(id))
     }
 
+    const handleClearCart = () => {
+        dispatch(removeFromCart())
+    }
+
+
     return (
         <div className="min-h-screen w-full pt-[90px] px-3 ">   
             <h1 className="text-3xl lg:text-4xl font-bold mb-6">
@@ -48,7 +53,7 @@ const Cart = () => {
                                 <div>
                                     <h1 className="text-2xl lg:text-4xl">Cart is Empty</h1>
                                     <Link to='/shop'>
-                                        <button className="w-full bg-red-700 hover:bg-red-500 py-2 rounded-xl mt-7 text-lg lg:text-xl text-white transition-all duration-200">
+                                        <button className="lg:w-full w-[200px] bg-red-700 hover:bg-red-500 py-2 rounded-xl mt-7 text-lg lg:text-xl text-white transition-all duration-200">
                                             Continue Shopping
                                         </button>
                                     </Link>
@@ -57,7 +62,7 @@ const Cart = () => {
                         )
                     }
                 </div>
-
+                    
 
                 <div className="w-full lg:w-[25%] shadow-xl px-4 py-5 h-fit">
                     <div className="flex justify-between text-gray-700 mb-4">
@@ -75,9 +80,17 @@ const Cart = () => {
                         </div>
                     </div>
 
-                    <button className="w-full bg-red-700 hover:bg-red-500 py-2 rounded-xl text-lg text-white transition-all duration-200">
-                        Checkout
-                    </button>
+                    <div className="flex justify-around lg:mt-15">
+                        <button className={`${cartItems? "lg:w-[130px] w-[200px] self-center px-3 py-1 bg-red-700 rounded-lg text-white hover:bg-red-500 hover:scale-105 transition-all duration-200" :"bg-red-700 hover:bg-red-500 py-2 rounded-xl text-lg text-white transition-all duration-200"}`}>
+                            Checkout
+                        </button>
+
+                    {
+                        cartItems.length>0 && <button className=" lg:w-[130px] w-[200px] self-center px-3 py-1 bg-red-700 rounded-lg text-white hover:bg-red-500 hover:scale-105 transition-all duration-200" onClick={handleClearCart}>
+                            Clear cart
+                        </button>
+                    }
+                    </div>
                 </div>
             </div>
 

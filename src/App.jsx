@@ -43,9 +43,9 @@ function App() {
 
           {cartItems.length > 0 && (
             <Link to="/cart">
-              <div className="fixed bottom-6 right-6 z-50 sm:block md:block lg:hidden bg-red-300 p-4 rounded-[30%]">
+              <div className="fixed bottom-6 right-6 z-50 sm:block md:block lg:hidden p-4">
                 <div className="relative inline-block">
-                  <FaCartPlus className="text-2xl text-black hover:text-red-700 cursor-pointer hover:scale-110 transition" />
+                  <FaCartPlus className="text-4xl text-black hover:text-red-700 cursor-pointer hover:scale-110 transition" />
                   <span className="absolute -top-2 -right-2 text-[10px] bg-red-700 text-white px-1.5 rounded-full">
                     {cartItems.length}
                   </span>

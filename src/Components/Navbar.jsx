@@ -28,9 +28,9 @@ const Navbar = () => {
     return (
         <div className="w-full py-3 shadow-xl bg-white fixed z-50">
 
-            <div className="container mx-auto flex items-center justify-between px-4 mb-2">
-                <Link to='/' className="w-[100%]  lg:text-5xl text-4xl font-bold text-start text-red-700 cursor-pointer" >
-                    <h1>Shoppic</h1>
+            <div className="h-[50px] container mx-auto flex items-center justify-between px-4 mb-2">
+                <Link to='/' >
+                    <img src="https://i.pinimg.com/1200x/1e/1c/3b/1e1c3bc1d63b7e17faf3dfc8d8044bdb.jpg" alt="Shoppic" className="w-[50px] h-[50px] overflow-hidden "/>
                 </Link >
 
                  <div className="text-3xl text-red-700 lg:hidden cursor-pointer" onClick={() => setMenuOpen(!menuOpen)}>

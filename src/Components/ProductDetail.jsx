@@ -28,6 +28,7 @@ const ProductDetail = () => {
             navigate('/cart')
         } else {
             dispatch(addToCart(clickedProduct));
+            navigate('/cart')
         }
         dispatch(calculateTotal());
     };
@@ -56,7 +57,7 @@ const ProductDetail = () => {
             <img
             src={clickedProduct.images?.[0]}
             alt={clickedProduct.title}
-            className="rounded-xl object-cover h-100 min-h-110 max-w-[40%] self-center"
+            className="rounded-xl object-cover h-100 min-h-110 min-w-[40%] self-center"
             />
             <div className="">
             <h1 className="text-4xl font-semibold">{clickedProduct.title}</h1>
