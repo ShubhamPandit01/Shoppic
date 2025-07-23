@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../Redux/slice/UserSlice";
+import {clearCart} from "../Redux/slice/Cart"
 import { useNavigate } from "react-router-dom";
 
 const LogoutButton = () => {
@@ -9,6 +10,7 @@ const LogoutButton = () => {
 
     const handleLogout = () => {
         dispatch(logout());
+        dispatch(clearCart())
         navigate("/user");
     };
 

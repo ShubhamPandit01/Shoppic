@@ -2,13 +2,15 @@ import { useState } from "react";
 
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaUserAlt, FaCartPlus} from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
 import { Link } from "react-router-dom";
 import Hamburger from "./Hamburger";
 import LogoutButton from "./Logout";
+import { currencyFilter } from "../Redux/slice/data";
 
 
 const Navbar = () => {
+    const dispatch = useDispatch()
     const [cart, setCart] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false);
     const [userProfile, setUserProfile] = useState(false);
@@ -19,6 +21,12 @@ const Navbar = () => {
         if(cart == ''){
             setCart('cart')
         }else setCart('')
+    }
+
+    function handleCurrency(e){
+        let value = e.target.value
+        console.log(e.target.value)
+        dispatch(currencyFilter(value))
     }
 
     const { currentUser } = useSelector((state) => state.user); // for logout
@@ -39,6 +47,15 @@ const Navbar = () => {
 
 
                 <div className="hidden lg:flex justify-center gap-10 py-2 items-center">
+                    <select name="currency" id="currency" className="block w-full p-1 border border-gray-300 rounded-md shadow-sm" onClick={(e)=>handleCurrency(e)}>
+                        <option value="USD">US Dollar (USD)</option>
+                        <option value="INR">Indian Rupee (INR)</option>
+                        <option value="EUR">Euro (EUR)</option>
+                        <option value="GBP">British Pound (GBP)</option>
+                        <option value="JPY">Japanese Yen (JPY)</option>
+                    </select>
+
+
                     <Link to="/" className="text-lg hover:text-red-700 hover:underline hover:scale-105 transition duration-300">Home</Link>
                     <Link to="/shop" className="text-lg hover:text-red-700 hover:underline hover:scale-105 transition duration-300">Shop</Link>
                     <Link to="/contact" className="text-lg hover:text-red-700 hover:underline hover:scale-105 transition duration-300">Contact</Link>

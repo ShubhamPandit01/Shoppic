@@ -6,10 +6,12 @@ import { addToCart, calculateTotal } from "../Redux/slice/Cart";
 import { filteredProduct } from "../Redux/slice/data";
 import { useNavigate } from "react-router-dom";
 
+
 const ProductCard = ({ product }) => {
 
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
+  const { currency } = useSelector((state) => state.data);
   const [iconHover, setIconHover] = useState(false);
 
   const navigate = useNavigate()
@@ -41,7 +43,7 @@ const ProductCard = ({ product }) => {
                 <div className="space-y-2 mt-4">
 
                     <h1 className="text-xl font-semibold">{product.title}</h1>
-                    <p className="text-lg font-medium text-red-700">Price: ${product.price}</p>
+                    <p className="text-lg font-medium text-red-700">Price: {currency}{product.price}</p>
 
                 </div>
 
